@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.woniuxy.dao.UserDao" >
+ 
+  <insert id="insertInfo" parameterType="com.woniuxy.entities.HouseBookingInfo"> 
+  	insert into housebooking(area,cartype,movedate,contact,status,phone) 
+  	
+  			values (#{area},#{cartype},#{movedate},#{contact},#{status},#{phone})
+  </insert>
+  
+  <select id="findUser" parameterType="com.woniuxy.entities.User" resultType="String">
+  	select `password` from users where `name`=#{name}
+  </select>
+  <select id="findAll" resultType="com.woniuxy.entities.HouseBookingInfo">
+  	select * from housebooking;
+  </select>
+  <select id="findOne" resultType="com.woniuxy.entities.HouseBookingInfo" parameterType="int">
+  	select * from housebooking where id=#{id};
+  </select>
+  <update id="updatainfo" parameterType="com.woniuxy.entities.UserInfoChange">
+  	UPDATE housebooking SET status=#{upinfo} WHERE id=#{uid};
+  	
+  </update>
+</mapper>
